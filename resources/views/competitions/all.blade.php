@@ -16,14 +16,16 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($competitions as $competition)
         <tr>
-            <td>Viens</td>
-            <td>Divi</td>
-            <td>Trīs</td>
+            <td>{{ $competition->title }}</td>
+            <td>{{ $competition->place }}</td>
+            <td>{{ $competition->date }}</td>
             <td><button class="btn-piedalities">Piedalīties</button></td>
             <td><button class="btn-labot">Labot</button></td>
             <td><button class="btn-dzest">Dzēst</button></td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection

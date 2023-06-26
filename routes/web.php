@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CompetitionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('competitions.all');
 });
+
+Route::get('/competitons', [CompetitionController::class, 'showAll']) -> name('competitions.all');
+Route::get('/competitions/create',[CompetitionController::class, 'create'] ) -> name('competitions.create');
+Route::post('competitions/store',[CompetitionController::class, 'store'] ) -> name('competitions.store');
