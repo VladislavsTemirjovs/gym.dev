@@ -22,8 +22,16 @@
             <td>{{ $competition->place }}</td>
             <td>{{ $competition->date }}</td>
             <td><button class="btn-piedalities">Piedalīties</button></td>
-            <td><button class="btn-labot">Labot</button></td>
-            <td><button class="btn-dzest">Dzēst</button></td>
+            <td>
+                <a href = "{{route('competitions.edit', ['id' => $competition->id])}}" class="btn-labot">Labot</a>     
+            </td>
+            <td>
+            <form action="{{ route('competitions.destroy', ['id' => $competition->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this competition?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-dzest">Dzēst</button>
+            </form>
+            </td>
         </tr>
         @endforeach
     </tbody>

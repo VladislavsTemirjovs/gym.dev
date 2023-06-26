@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('competitions.all');
 });
 
-Route::get('/competitons', [CompetitionController::class, 'showAll']) -> name('competitions.all');
+Route::get('/competitions', [CompetitionController::class, 'showAll']) -> name('competitions.all');
 Route::get('/competitions/create',[CompetitionController::class, 'create'] ) -> name('competitions.create');
 Route::post('competitions/store',[CompetitionController::class, 'store'] ) -> name('competitions.store');
+Route::get('/competitions/edit/{id}',[CompetitionController::class, 'edit'] ) -> name('competitions.edit');
+Route::delete('/competitions/delete/{id}',[CompetitionController::class, 'destroy'] ) -> name('competitions.destroy');
+Route::put('/competitions/update/{id}',[CompetitionController::class, 'update'] ) -> name('competitions.update');

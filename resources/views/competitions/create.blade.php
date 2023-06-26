@@ -19,7 +19,7 @@
         <input type="date" id="date" name="date" class="form-input" required>
     </div>
     <div class="form-group">
-        <button type="submit" class="form-submit">Submit</button>
+        <button type="submit" class="form-submit">Apstrprināt</button>
     </div>
 </form>
 @endsection

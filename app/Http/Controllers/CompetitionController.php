@@ -29,4 +29,27 @@ class CompetitionController extends Controller
         $comp->save();
         return redirect() -> route('competitions.all');
     }
+    public function edit($id)
+    {
+    $competition = Competition::find($id);
+    return view('competitions.edit', ['competition' => $competition]);
+    }
+    public function destroy($id)
+    {
+        $competition = Competition::find($id);
+        $competition->delete();
+
+        return redirect()->route('competitions.all');
+    }
+    public function update(Request $request, $id)
+{
+    $competition = Competition::find($id);
+
+    $competition->title = $request->input('title');
+    $competition->place = $request->input('place');
+    $competition->date = $request->input('date');
+    $competition->save();
+
+    return redirect()->route('competitions.all');
+}
 }
