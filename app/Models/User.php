@@ -18,9 +18,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'login',
         'name',
-        'email',
         'password',
+        'name',
+        'surname',
+        'sex',
+        'age',
+        'weigth',
+        'bench',
+        'squat',
+        'deadlift',
+        'role',
     ];
 
     /**
@@ -41,4 +50,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function competes(){
+        return $this->belongsTo(competes::class);
+    }
+    public function comment(){
+        return $this->hasMany(comment::class);
+    }
+    public function post(){
+        return $this->hasMany(post::class);
+    }
 }
