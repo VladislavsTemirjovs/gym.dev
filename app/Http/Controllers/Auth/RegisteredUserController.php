@@ -34,21 +34,34 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'login' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'surname' => ['required', 'string', 'max:255'],
+            'sex' => ['required', 'string', 'in:Male,Female'],
+            'age' => ['required', 'integer', 'min:12', 'max:100'],
+            'weight' => ['required', 'numeric', 'min:40', 'max:200'],
+            'bench' => ['required', 'numeric', 'min:20', 'max:999'],
+            'squat' => ['required', 'numeric', 'min:20', 'max:999'],
+            'deadlift' => ['required', 'numeric', 'min:20', 'max:999'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        $user = User::create([
+    
+        Auth::login($user = User::create([
+            'login' => $request->login,
             'name' => $request->name,
-            'email' => $request->email,
+            'surname' => $request->surname,
+            'sex' => $request->sex,
+            'age' => $request->age,
+            'weight' => $request->weight,
+            'bench' => $request->bench,
+            'squat' => $request->squat,
+            'deadlift' => $request->deadlift,
             'password' => Hash::make($request->password),
-        ]);
-
+            'role' => 'user'
+        ]));
+    
         event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+    
+        return redirect()->route('login');
     }
 }

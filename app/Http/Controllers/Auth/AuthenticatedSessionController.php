@@ -51,4 +51,16 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+    public function guest()
+{
+    // Authenticate the user as a guest
+    $credentials = ['login' => 'Guest', 'password' => '1234'];
+    if (Auth::attempt($credentials)) {
+        // Authentication successful, redirect to the desired page
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    // Authentication failed, handle the error or redirect to an error page
+    return redirect()->back()->withErrors(['message' => 'Failed to log in as a guest.']);
+}
 }

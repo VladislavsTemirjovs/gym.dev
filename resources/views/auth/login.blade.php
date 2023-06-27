@@ -77,6 +77,13 @@
     .btn-guest {
         margin-top: 10px;
     }
+    .guest-button {
+    background-color: yellow;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+}
 </style>
 
 <x-guest-layout>
@@ -105,7 +112,7 @@
             <div class="button-group">
                 <button type="submit" class="btn-primary">{{ __('Pieslēgties') }}</button>
                 <button type="button" onclick="window.location.href='{{ route('register') }}'" class="btn-secondary">{{ __('Reģistrēties') }}</button>
-                <button type="button" class="btn-guest">{{ __('Ienākt kā ciemiņš') }}</button>
+                <button type="button" onclick="window.location.href='{{ route('guest') }}'" class="btn-secondary">{{ __('Ienākt kā ciemiņš') }}</button>
             </div>
         </form>
     </x-auth-card>

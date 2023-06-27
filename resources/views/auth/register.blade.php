@@ -4,7 +4,7 @@
     <title>Registration</title>
     <style>
         html, body {
-            height: 100%;
+            height: 120%;
             margin: 40;
             padding: 40;
         }
@@ -159,6 +159,7 @@
                             {{ __('Reģistrēties') }}
                         </x-button>
                     </div>
+                    <button type="button" onclick="window.location.href='{{ route('login') }}'" class="ml-4">{{ __('Atgriezties') }}</button>
                 </form>
             </div>
         </x-auth-card>

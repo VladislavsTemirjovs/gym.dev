@@ -1,10 +1,62 @@
-@extends('layouts.app')
+<style>
+    .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000;
+    color: #FFD700;
+    margin-top: 50px;
+}
 
-@section('title', 'Kalendārs')
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
+}
 
+.table th {
+    background-color: #FFD700;
+    color: #000;
+}
 
-@section('content')
-<table class="table">
+.table td .btn-piedalities {
+    padding: 5px 10px;
+    background-color: #00FF00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table td .btn-labot {
+    padding: 5px 10px;
+    background-color: #FFFF00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table td .btn-dzest {
+    padding: 5px 10px;
+    background-color: #FF0000;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table td button:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+</style>
+<x-app-layout>
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
+            {{ __('Kalendārs') }}
+        </h2>
+    </x-slot>
+    <table class="table">
     <thead>
         <tr>
             <th>Nosaukums</th>
@@ -36,4 +88,4 @@
         @endforeach
     </tbody>
 </table>
-@endsection
+</x-app-layout>

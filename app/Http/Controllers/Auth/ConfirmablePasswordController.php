@@ -29,8 +29,23 @@ class ConfirmablePasswordController extends Controller
     public function store(Request $request)
     {
         if (! Auth::guard('web')->validate([
-            'email' => $request->user()->email,
+            'login' => $request->user()->login,
             'password' => $request->password,
+        ])) {
+            throw ValidationException::withMessages([
+                'password' => __('auth.password'),
+            ]);
+        }
+
+        $request->session()->put('auth.password_confirmed_at', time());
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+    public function guest()
+    {
+        if (! Auth::guard('web')->validate([
+            'login' => 'Ciemiņš',
+            'password' => 'Ciemo',
         ])) {
             throw ValidationException::withMessages([
                 'password' => __('auth.password'),
