@@ -1,56 +1,113 @@
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        color: yellow;
+    }
+
+    .container {
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid yellow;
+        background-color: black;
+        color: yellow;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        border-color: yellow;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-guest {
+        background-color: yellow;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-guest:hover {
+        background-color: black;
+        color: yellow;
+    }
+
+    .btn-secondary {
+        margin-left: 10px;
+    }
+
+    .btn-guest {
+        margin-top: 10px;
+    }
+</style>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <h1 style="color: yellow;">RMI GYM</h1>
             </a>
         </x-slot>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="form-group">
+                <x-label for="login" :value="__('Lietotājvārds')" class="text-yellow-500" />
+                <x-input id="login" class="block mt-1 w-full bg-black text-yellow-500 border-yellow-500 focus:outline-none focus:border-yellow-600" type="text" name="login" :value="old('login')" required autofocus />
             </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+            <div class="form-group">
+                <x-label for="password" :value="__('Parole')" class="text-yellow-500" />
+                <x-input id="password" class="block mt-1 w-full bg-black text-yellow-500 border-yellow-500 focus:outline-none focus:border-yellow-600" type="password" name="password" required autocomplete="current-password" />
             </div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+            <div class="button-group">
+                <button type="submit" class="btn-primary">{{ __('Pieslēgties') }}</button>
+                <button type="button" onclick="window.location.href='{{ route('register') }}'" class="btn-secondary">{{ __('Reģistrēties') }}</button>
+                <button type="button" class="btn-guest">{{ __('Ienākt kā ciemiņš') }}</button>
             </div>
         </form>
     </x-auth-card>
 </x-guest-layout>
+

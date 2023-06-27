@@ -48,7 +48,7 @@ class RegisterController extends Controller
             'role' => 'user',
         ]);
 
-        return redirect()->route('profile.login');
+        return redirect()->route('login');
     }
     public function login()
     {
