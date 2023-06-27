@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('surname',255);
             $table->enum('sex', ['Male', 'Female']);
             $table->integer('age');
-            $table->decimal('weight' ,5,2)->nullable();
+            $table->decimal('weight' ,5,2);
             $table->decimal('bench',5,2)->nullable();
             $table->decimal('squat',5,2)->nullable();
             $table->decimal('deadlift',5,2)->nullable();
