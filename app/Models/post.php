@@ -9,11 +9,12 @@ class post extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'comment',
+        'user_id',
+        'content',
         'image',
         'date',];
-    public function person(){
-        return $this->belongsTo(person::class);
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function comment(){
         return $this->hasMany(comment::class);

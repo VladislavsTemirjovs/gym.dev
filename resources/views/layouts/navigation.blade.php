@@ -143,7 +143,12 @@
 
 <nav class="navigation">
     <ul>
-        <li><a href="{{ route('home') }}">Sākums</a></li>
+        <li>
+            <a href="{{ route('home') }}">Sākums</a>
+            <ul class="submenu">
+                <li><a href="{{ route('posts.new') }}">Jauns Ieraksts</a></li>
+            </ul>
+        </li>
         <li>
             <a href="{{ route('competitions.all') }}">Kalendārs</a>
             <ul class="submenu">
