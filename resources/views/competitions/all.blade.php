@@ -1,4 +1,10 @@
 <style>
+            html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: yellow;
+    }
     .table {
     width: 100%;
     border-collapse: collapse;
@@ -52,8 +58,8 @@
 </style>
 <x-app-layout>
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-            {{ __('Kalendārs') }}
+<h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
+            {{ __('Visas Sacensības') }}
         </h2>
     </x-slot>
     <table class="table">
