@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('login')->unique();
             $table->string('password');
             $table->string('name',255);
+            $table->string('image',255);
             $table->string('surname',255);
             $table->enum('sex', ['Male', 'Female']);
             $table->integer('age');

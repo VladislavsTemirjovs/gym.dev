@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,9 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/competitions/edit/{id}',[CompetitionController::class, 'edit'] ) -> name('competitions.edit');
     Route::delete('/competitions/delete/{id}',[CompetitionController::class, 'destroy'] ) -> name('competitions.destroy');
     Route::put('/competitions/update/{id}',[CompetitionController::class, 'update'] ) -> name('competitions.update');
+
+    Route::get('/posts', [PostController::class, 'show']) -> name('posts.all');
+    Route::post('/posts/create', [PostController::class, 'savePost']) -> name('posts.post');
 });
 
 require __DIR__.'/auth.php';

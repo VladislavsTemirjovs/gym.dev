@@ -117,7 +117,7 @@ body {
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <!-- Create Post Form -->
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('posts.post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div>

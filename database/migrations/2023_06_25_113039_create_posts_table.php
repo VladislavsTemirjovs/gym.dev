@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('person_id')->constrained()->cascadeOnDelete();
-            $table->string('comment');
+            $table->string('content');
             $table->string('image');
             $table->date('date');
             $table->timestamps();
