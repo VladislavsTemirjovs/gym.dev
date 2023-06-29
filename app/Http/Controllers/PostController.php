@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\comment;
 use App\Http\Controllers\View;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
     public function show() {
-        return view('dashboard');
+        $posts = post::with('user', 'comment')->get();
+        return view('dashboard',compact('posts'));
     }
     public function create()
     {
@@ -34,8 +39,16 @@ class PostController extends Controller
     
         // Handle image upload, if provided
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('post_images', 'public');
-            $validatedData['image'] = $imagePath;
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $imagePath = public_path('images/' . $imageName);
+            
+            // Resize the image to the desired dimensions
+            $resizedImage = Image::make($image)
+                ->resize(300, 200) // Set the width and height you want
+                ->save($imagePath);
+        
+            $validatedData['image'] = 'images/' . $imageName;
             $post->image = $validatedData['image'];
         }
         $post->user_id = auth()->user()->id;
@@ -49,4 +62,22 @@ class PostController extends Controller
         // Return a response indicating success
         return redirect()->route('posts.all');
     }
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+    
+        // Delete the post's image if it exists
+        if (!empty($post->image)) {
+            $imagePath = public_path($post->image);
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+        }
+    
+        // Delete the post
+        $post->delete();
+    
+        return redirect()->route('posts.all');
+    }
+
 }

@@ -12,9 +12,9 @@ class comment extends Model
         'comment',
     ];
     public function post(){
-        return $this->belongsTo(post::class);
+        return $this->belongsTo(post::class, 'post_id');
     }
-    public function person(){
-        return $this->belongsTo(person::class);
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

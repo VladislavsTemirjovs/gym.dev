@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('competes', function (Blueprint $table) {
-            $table->foreignId('person_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('competition_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

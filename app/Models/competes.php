@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class competes extends Model
 {
     use HasFactory;
-    public function person(){
-        return $this->hasMany(person::class);
+    public function user(){
+        return $this->hasMany(User::class);
     }
     public function competition(){
         return $this->hasMany(competition::class);

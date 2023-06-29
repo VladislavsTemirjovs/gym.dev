@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 
 
 /*
@@ -18,8 +21,10 @@ use App\Http\Controllers\PostController;
 
 Route::middleware(['auth'])->group( function(){
     Route::get('/', function(){return redirect('/dashboard');}) -> name('home');
-    Route::get('/dashboard', function(){return view('/dashboard');}) -> middleware(['auth', 'verified']) -> name('dashboard');
+    Route::get('/dashboard', function () { $posts = post::all(); return view('dashboard', compact('posts')); })->middleware(['auth', 'verified'])->name('dashboard');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout');
+    Route::get('/profile/profile', [ProfileController::class, 'show'])->name('profile.show');
+
 
     Route::get('/competitions', [CompetitionController::class, 'showAll']) -> name('competitions.all');
     Route::get('/competitions/create',[CompetitionController::class, 'create'] ) -> name('competitions.create');
@@ -31,6 +36,9 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/post', [PostController::class, 'show']) -> name('posts.all');
     Route::get('/posts/new', [PostController::class, 'create']) -> name('posts.new');
     Route::post('/posts/create', [PostController::class, 'savePost']) -> name('posts.post');
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
 });
 
 require __DIR__.'/auth.php';
