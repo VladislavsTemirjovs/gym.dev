@@ -53,7 +53,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="header">
-            {{ __('Izveidot Ierakstu') }}
+        {{ __('messages.postnew') }}
         </h2>
     </x-slot>
 
@@ -62,21 +62,21 @@
             @csrf
 
             <div>
-                <label for="content" class="label">Teksts:</label>
+                <label for="content" class="label">{{ __('messages.text') }}:</label>
                 <textarea id="content" name="content" rows="4" class="input" required></textarea>
             </div>
 
             <div>
-                <label for="image" class="label">Attēls:</label>
+                <label for="image" class="label">{{ __('messages.image') }}:</label>
                 <input type="file" id="image" name="image" accept="image/*" class="input">
             </div>
 
             <div class="mt-4">
                 <button type="submit" class="button">
-                    Izveidot
+                {{ __('messages.create') }}
                 </button>
                 <button type="button" onclick="window.location.href='{{ route('posts.all') }}'" class="button">
-                    Atgriezties
+                {{ __('messages.return') }}
                 </button>
             </div>
         </form>

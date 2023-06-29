@@ -53,26 +53,26 @@
 <x-app-layout>
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-            {{ __('Labot Sacensības') }}
+        {{ __('messages.editcomp') }}
         </h2>
     </x-slot>
     <form method="POST" action="{{ route('competitions.update', ['id' => $competition->id]) }}" class="form">
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="title">Nosaukums:</label>
+            <label for="title">{{ __('messages.title') }}:</label>
             <input type="text" id="title" name="title" class="form-input" value="{{ $competition->title }}" required>
         </div>
         <div class="form-group">
-            <label for="place">Vieta:</label>
+            <label for="place">{{ __('messages.place') }}:</label>
             <input type="text" id="place" name="place" class="form-input" value="{{ $competition->place }}" required>
         </div>
         <div class="form-group">
-            <label for="date">Datums:</label>
+            <label for="date">{{ __('messages.date') }}:</label>
             <input type="date" id="date" name="date" class="form-input" value="{{ $competition->date }}" required>
         </div>
         <div class="form-group">
-            <button type="submit" class="form-submit">Atjaunot informāciju</button>
+            <button type="submit" class="form-submit">{{ __('messages.confirm') }}</button>
         </div>
     </form>
 </x-app-layout>

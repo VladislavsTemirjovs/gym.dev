@@ -59,19 +59,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-            {{ __('Visas Sacensības') }}
+            {{ __('messages.allcomp') }}
         </h2>
     </x-slot>
     <table class="table">
         <thead>
             <tr>
-                <th>Nosaukums</th>
-                <th>Vieta</th>
-                <th>Datums</th>
-                <th>Piedalīties</th>
+                <th>{{ __('messages.title') }}</th>
+                <th>{{ __('messages.place') }}</th>
+                <th>{{ __('messages.date') }}</th>
+                <th>{{ __('messages.apply') }}</th>
                 @if(auth()->user()->role === 'admin')
-                    <th>Labot</th>
-                    <th>Dzēst</th>
+                    <th>{{ __('messages.edit') }}</th>
+                    <th>{{ __('messages.delete') }}</th>
                 @endif
             </tr>
         </thead>
@@ -90,19 +90,19 @@
                                 <form action="{{ route('competes.store') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="competition_id" value="{{ $competition->id }}">
-                                    <button type="submit" class="btn-piedalities">Piedalīties</button>
+                                    <button type="submit" class="btn-piedalities">{{ __('messages.apply') }}</button>
                                 </form>
                     </td>
                     @endif
                     @if(auth()->user()->role === 'admin')
                         <td>
-                            <a href="{{ route('competitions.edit', ['id' => $competition->id]) }}" class="btn-labot">Labot</a>
+                            <a href="{{ route('competitions.edit', ['id' => $competition->id]) }}" class="btn-labot">{{ __('messages.edit') }}</a>
                         </td>
                         <td>
                             <form action="{{ route('competitions.destroy', ['id' => $competition->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this competition?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn-dzest">Dzēst</button>
+                                <button type="submit" class="btn-dzest">{{ __('messages.delete') }}</button>
                             </form>
                         </td>
                     @endif

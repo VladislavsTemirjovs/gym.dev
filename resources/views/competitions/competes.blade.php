@@ -87,9 +87,9 @@
         <table class="table table-black-yellow">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Weight</th>
+                    <th>{{ __('messages.name') }}</th>
+                    <th>{{ __('messages.surname') }}</th>
+                    <th>{{ __('messages.weight') }}</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="title">
-            {{ __('User Profile') }}
+        {{ __('messages.UserProf') }}
         </h2>
     </x-slot>
 
@@ -74,53 +74,66 @@
 
     </style>
 
-    <div class="profile">
-        <div class="profile-image">
-            <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="image">
+<div class="profile">
+    <div class="profile-image">
+        <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="image">
+    </div>
+    <div class="profile-details">
+        <div class="info">
+            <span class="label">{{ __('messages.name') }}:</span>
+            <span class="value">{{ $user->name }}</span>
         </div>
-        <div class="profile-details">
-            <div class="info">
-                <span class="label">Name:</span>
-                <span class="value">{{ $user->name }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Surname:</span>
-                <span class="value">{{ $user->surname }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Sex:</span>
-                <span class="value">{{ $user->sex }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Age:</span>
-                <span class="value">{{ $user->age }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Weight:</span>
-                <span class="value">{{ $user->weight }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Bench Press:</span>
-                <span class="value">{{ $user->bench }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Squat:</span>
-                <span class="value">{{ $user->squat }}</span>
-            </div>
-            <div class="info">
-                <span class="label">Deadlift:</span>
-                <span class="value">{{ $user->deadlift }}</span>
-            </div>
+        <div class="info">
+            <span class="label">{{ __('messages.surname') }}:</span>
+            <span class="value">{{ $user->surname }}</span>
         </div>
-        <div class="profile-buttons">
-            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit</a>
+        <div class="info">
+            <span class="label">{{ __('messages.sex') }}:</span>
+            <span class="value">{{ $user->sex }}</span>
+        </div>
+        <div class="info">
+            <span class="label">{{ __('messages.age') }}:</span>
+            <span class="value">{{ $user->age }}</span>
+        </div>
+        <div class="info">
+            <span class="label">{{ __('messages.weight') }}:</span>
+            <span class="value">{{ $user->weight }}</span>
+        </div>
+        <div class="info">
+            <span class="label">{{ __('messages.bench') }}:</span>
+            <span class="value">{{ $user->bench }}</span>
+        </div>
+        <div class="info">
+            <span class="label">{{ __('messages.squat') }}:</span>
+            <span class="value">{{ $user->squat }}</span>
+        </div>
+        <div class="info">
+            <span class="label">{{ __('messages.dead') }}:</span>
+            <span class="value">{{ $user->deadlift }}</span>
+        </div>
+    </div>
+    <div class="profile-buttons">
+        @if (auth()->user()->role === 'admin' || auth()->user()->id === $user->id)
+            @if ($user->role === 'user')
+                <form action="{{ route('admin.make', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">{{ __('messages.makeAdm') }}</button>
+                </form>
+            @elseif ($user->role === 'admin')
+                <form action="{{ route('admin.remove', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">{{ __('messages.removeAdm') }}</button>
+                </form>
+            @endif
+            <a href="{{ route('profile.edit') }}" class="btn btn-primary">{{ __('messages.edit') }}</a>
             <form action="{{ route('profile.destroy') }}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
             </form>
-        </div>
+        @endif
     </div>
+</div>
 </x-app-layout>
 
 

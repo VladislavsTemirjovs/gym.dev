@@ -86,81 +86,82 @@
                     @csrf
 
                     <div class="form-group">
-                        <x-label for="login" :value="__('Lietotājvārds')" />
+                        <x-label for="login" :value="__('messages.nickname')" />
 
                         <x-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="name" :value="__('Vārds')" />
+                        <x-label for="name" :value="__('messages.name')" />
 
                         <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="surname" :value="__('Uzvārds')" />
+                        <x-label for="surname" :value="__('messages.surname')" />
 
                         <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="sex" :value="__('Dzimums')" />
+                        <x-label for="sex" :value="__('messages.sex')" />
 
                         <select id="sex" name="sex" required>
-                            <option value="Male" {{ old('sex') == 'Male' ? 'selected' : '' }}>{{ __('Vīrietis') }}</option>
-                            <option value="Female" {{ old('sex') == 'Female' ? 'selected' : '' }}>{{ __('Sieviete') }}</option>
+                            <option value="Male" {{ old('sex') == 'Male' ? 'selected' : '' }}>{{ __('messages.male') }}</option>
+                            <option value="Female" {{ old('sex') == 'Female' ? 'selected' : '' }}>{{ __('messages.female') }}</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <x-label for="age" :value="__('Vecums')" />
+                        <x-label for="age" :value="__('messages.age')" />
 
                         <x-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="weight" :value="__('Svars')" />
+                        <x-label for="weight" :value="__('messages.weight')" />
 
                         <x-input id="weight" class="block mt-1 w-full" type="number" name="weight" step="1" :value="old('weight')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="bench" :value="__('Spiešana Guļus')" />
+                        <x-label for="bench" :value="__('messages.bench')" />
 
                         <x-input id="bench" class="block mt-1 w-full" type="number" name="bench" step="0.25" :value="old('bench')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="squat" :value="__('Pietupieni')" />
+                        <x-label for="squat" :value="__('messages.squat')" />
 
                         <x-input id="squat" class="block mt-1 w-full" type="number" name="squat" step="0.25" :value="old('squat')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="deadlift" :value="__('Vilkme')" />
+                        <x-label for="deadlift" :value="__('messages.dead')" />
 
                         <x-input id="deadlift" class="block mt-1 w-full" type="number" name="deadlift" step="0.25" :value="old('deadlift')" required />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="password" :value="__('Parole')" />
+                        <x-label for="password" :value="__('messages.password')" />
 
                         <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
                     </div>
 
                     <div class="form-group">
-                        <x-label for="password_confirmation" :value="__('Apstiprināt paroli')" />
+                        <x-label for="password_confirmation" :value="__('messages.confirmpass')" />
 
                         <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                     </div>
 
                     <div class="form-group">
                         <x-button class="ml-4">
-                            {{ __('Reģistrēties') }}
+                            {{ __('messages.register') }}
                         </x-button>
                     </div>
-                    <button type="button" onclick="window.location.href='{{ route('login') }}'" class="ml-4">{{ __('Atgriezties') }}</button>
+                    <button type="button" onclick="window.location.href='{{ route('login') }}'" class="ml-4">{{ __('messages.return') }}</button>
                 </form>
+                
             </div>
         </x-auth-card>
     </x-guest-layout>

@@ -56,7 +56,7 @@ body {
 <x-app-layout>
     <x-slot name="header">
         <h2 class="title">
-            {{ __('User List') }}
+        {{ __('messages.allusers') }}
         </h2>
     </x-slot>
 
@@ -70,11 +70,11 @@ body {
             </a>
             <div class="profile-details">
                 <div class="info">
-                    <span class="label">Name:</span>
+                    <span class="label">{{ __('messages.name') }}:</span>
                     <span class="value">{{ $user->name }}</span>
                 </div>
                 <div class="info">
-                    <span class="label">Surname:</span>
+                    <span class="label">{{ __('messages.surname') }}:</span>
                     <span class="value">{{ $user->surname }}</span>
                 </div>
             </div>

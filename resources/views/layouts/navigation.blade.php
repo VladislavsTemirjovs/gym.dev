@@ -144,34 +144,41 @@
 <nav class="navigation">
     <ul>
         <li>
-            <a href="{{ route('home') }}">Sākums</a>
+            <a href="{{ route('home') }}">{{ __('messages.start') }}</a>
             @if(auth()->user()->role !== 'guest')
             <ul class="submenu">
-                <li><a href="{{ route('posts.new') }}">Jauns Ieraksts</a></li>
+                <li><a href="{{ route('posts.new') }}">{{ __('messages.newpost') }}</a></li>
             </ul>
             @endif
         </li>
         <li>
-            <a href="{{ route('competitions.all') }}">Kalendārs</a>
+            <a href="{{ route('competitions.all') }}">{{ __('messages.calendar') }}</a>
             @if(auth()->user()->role === 'admin')
             <ul class="submenu">
-                <li><a href="{{ route('competitions.create') }}">Izveidot jaunas</a></li>
+                <li><a href="{{ route('competitions.create') }}">{{ __('messages.newcal') }}</a></li>
             </ul>
             @endif
         </li>
-        <li><a href="{{ route('user.filter') }}">Reitings</a></li>
+        <li><a href="{{ route('user.filter') }}">{{ __('messages.rank') }}</a></li>
         @if(auth()->user()->role !== 'guest')
-        <li><a href="{{route('profile.show')}}">Profils</a>
+        <li><a href="{{route('profile.show')}}">{{ __('messages.profile') }}</a>
             <ul class="submenu">
-                <li><a href="{{ route('user.list') }}">Parādīt visus</a></li>
+                <li><a href="{{ route('user.list') }}">{{ __('messages.showall') }}</a></li>
             </ul>
         </li>    
         @endif
         <li>
             <form id="post-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
-                <a href="#" onclick="event.preventDefault(); document.getElementById('post-link').submit();">Izlogoties</a>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('post-link').submit();">{{ __('messages.logout') }}</a>
             </form>
+            <form method="POST" action="{{ route('switch-language') }}">
+    @csrf
+    <select name="locale" onchange="this.form.submit()">
+        <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
+        <option value="lv" {{ app()->getLocale() === 'lv' ? 'selected' : '' }}>Latvian</option>
+    </select>
+</form>
         </li>
     </ul>
 </nav>

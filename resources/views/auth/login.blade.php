@@ -100,19 +100,20 @@
             @csrf
 
             <div class="form-group">
-                <x-label for="login" :value="__('Lietotājvārds')" class="text-yellow-500" />
+                <x-label for="login" :value="__('messages.nickname')" class="text-yellow-500" />
                 <x-input id="login" class="block mt-1 w-full bg-black text-yellow-500 border-yellow-500 focus:outline-none focus:border-yellow-600" type="text" name="login" :value="old('login')" required autofocus />
             </div>
 
             <div class="form-group">
-                <x-label for="password" :value="__('Parole')" class="text-yellow-500" />
+                <x-label for="password" :value="__('messages.password')" class="text-yellow-500" />
                 <x-input id="password" class="block mt-1 w-full bg-black text-yellow-500 border-yellow-500 focus:outline-none focus:border-yellow-600" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="button-group">
-                <button type="submit" class="btn-primary">{{ __('Pieslēgties') }}</button>
-                <button type="button" onclick="window.location.href='{{ route('register') }}'" class="btn-secondary">{{ __('Reģistrēties') }}</button>
-                <button type="button" onclick="window.location.href='{{ route('guest') }}'" class="btn-secondary">{{ __('Ienākt kā ciemiņš') }}</button>
+                <button type="submit" class="btn-primary">{{ __('messages.login') }}</button>
+                <button type="button" onclick="window.location.href='{{ route('register') }}'" class="btn-secondary">{{ __('messages.register') }}</button>
+                <button type="button" onclick="window.location.href='{{ route('guest') }}'" class="btn-secondary">{{ __('messages.guest') }}</button>
+                
             </div>
         </form>
     </x-auth-card>

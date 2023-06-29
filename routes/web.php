@@ -7,7 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use App\Charts\BenchChart;
-
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,6 @@ use App\Charts\BenchChart;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::middleware(['auth'])->group( function(){
     Route::get('/', function(){return redirect('/dashboard');}) -> name('home');
     Route::get('/dashboard', function () { $posts = post::all(); return view('dashboard', compact('posts')); })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,6 +30,8 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/users', [ProfileController::class, 'userList'])->name('user.list');
     Route::get('/profile/{user}', [ProfileController::class, 'showID'])->name('profile.showID');
     Route::match(['get', 'post'], '/users/filter', [ProfileController::class, 'filterUsers'])->name('user.filter');
+    Route::post('/admin/make/{id}', [ProfileController::class, 'makeAdmin'])->name('admin.make');
+    Route::post('/admin/remove/{id}', [ProfileController::class, 'removeAdmin'])->name('admin.remove');
 
 
 
@@ -52,6 +53,7 @@ Route::middleware(['auth'])->group( function(){
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
+    Route::post('/switch-language', [LanguageController::class, 'switchLanguage'])->name('switch-language');
 });
 
 require __DIR__.'/auth.php';

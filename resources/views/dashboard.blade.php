@@ -108,7 +108,7 @@ body {
 <x-app-layout>
     <x-slot name="header">
         <h2 class="title">
-            {{ __('RMI GYM Forums') }}
+        {{ __('messages.forum') }}
         </h2>
     </x-slot>
 
@@ -134,11 +134,11 @@ body {
                         </div>
                     </div>
                     <div class="Comments">
-                        <h3 class="sign">Comments</h3>
+                        <h3 class="sign">{{ __('messages.comment') }}</h3>
                         @if (is_null($post->comment))
-                            <p>No comments yet.</p>
+                            <p>{{ __('messages.nocom') }}</p>
                         @elseif ($post->comment->isEmpty())
-                            <p>No comments yet.</p>
+                            <p>{{ __('messages.nocom') }}</p>
                         @else
                             @foreach ($post->comment as $comment)
                                 <div class="section">
@@ -161,14 +161,14 @@ body {
                             <div class="form-group">
                                 <textarea name="comment" class="form-control" placeholder="Write a comment" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                            <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
                         </form>
                     </div>
                     <div class="delete-button">
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                         </form>
                     </div>
                     @endif

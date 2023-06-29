@@ -163,7 +163,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Ranking
+        {{ __('messages.ranking') }}
         </h2>
     </x-slot>
 
@@ -175,19 +175,19 @@
                     @csrf
 
                     <div class="filter">
-                        <label for="filter" class="font-bold">Filter by:</label>
+                        <label for="filter" class="font-bold">{{ __('messages.filter') }}:</label>
                         <select name="filter" id="filter" class="border border-gray-300 rounded p-2">
-                            <option value="bench" @if($selectedFilter === 'bench') selected @endif>Bench Press</option>
-                            <option value="squat" @if($selectedFilter === 'squat') selected @endif>Squat</option>
-                            <option value="deadlift" @if($selectedFilter === 'deadlift') selected @endif>Deadlift</option>
+                            <option value="bench" @if($selectedFilter === 'bench') selected @endif>{{ __('messages.bench') }}</option>
+                            <option value="squat" @if($selectedFilter === 'squat') selected @endif>{{ __('messages.squat') }}</option>
+                            <option value="deadlift" @if($selectedFilter === 'deadlift') selected @endif>{{ __('messages.dead') }}</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="button">Filter</button>
+                    <button type="submit" class="button">{{ __('messages.filter') }}</button>
                 </form>
 
                 <div class="mt-8">
-                    <h2 class="text-2xl font-bold mb-4">Male Ranking</h2>
+                    <h2 class="text-2xl font-bold mb-4">{{ __('messages.malerank') }}</h2>
                     @if ($maleRanking)
                         @foreach ($maleRanking as $index => $user)
                             <div class="flex items-center mb-4">
@@ -201,12 +201,12 @@
                             </div>
                         @endforeach
                     @else
-                        <p>No male users found.</p>
+                        <p>{{ __('messages.nomale') }}</p>
                     @endif
                 </div>
 
                 <div class="mt-8">
-                    <h2 class="text-2xl font-bold mb-4">Female Ranking</h2>
+                    <h2 class="text-2xl font-bold mb-4">{{ __('messages.femalerank') }}</h2>
                     @if ($femaleRanking)
                         @foreach ($femaleRanking as $index => $user)
                             <div class="flex items-center mb-4">
@@ -220,7 +220,7 @@
                             </div>
                         @endforeach
                     @else
-                        <p>No female users found.</p>
+                        <p>{{ __('messages.nofem') }}</p>
                     @endif
                 </div>
             </div>

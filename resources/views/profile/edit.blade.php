@@ -59,7 +59,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="title">
-            {{ __('Edit Profile') }}
+        {{ __('messages.editprof') }}
         </h2>
     </x-slot>
 
@@ -69,53 +69,53 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="name" class="label">Name:</label>
+                <label for="name" class="label">{{ __('messages.name') }}:</label>
                 <input type="text" name="name" id="name" class="input" value="{{ $user->name }}" required>
             </div>
 
             <div class="form-group">
-                <label for="surname" class="label">Surname:</label>
+                <label for="surname" class="label">{{ __('messages.surname') }}:</label>
                 <input type="text" name="surname" id="surname" class="input" value="{{ $user->surname }}" required>
             </div>
 
             <div class="form-group">
-                <label for="sex" class="label">Sex:</label>
+                <label for="sex" class="label">{{ __('messages.sex') }}:</label>
                 <input type="text" name="sex" id="sex" class="input" value="{{ $user->sex }}" required>
             </div>
 
             <div class="form-group">
-                <label for="age" class="label">Age:</label>
+                <label for="age" class="label">{{ __('messages.age') }}:</label>
                 <input type="number" name="age" id="age" class="input" value="{{ $user->age }}" required>
             </div>
 
             <div class="form-group">
-                <label for="weight" class="label">Weight:</label>
+                <label for="weight" class="label">{{ __('messages.weight') }}:</label>
                 <input type="number" name="weight" id="weight" class="input" value="{{ $user->weight }}" required>
             </div>
 
             <div class="form-group">
-                <label for="bench" class="label">Bench Press:</label>
+                <label for="bench" class="label">{{ __('messages.bench') }}:</label>
                 <input type="number" name="bench" id="bench" class="input" value="{{ $user->bench }}" required>
             </div>
 
             <div class="form-group">
-                <label for="squat" class="label">Squat:</label>
+                <label for="squat" class="label">{{ __('messages.squat') }}:</label>
                 <input type="number" name="squat" id="squat" class="input" value="{{ $user->squat }}" required>
             </div>
 
             <div class="form-group">
-                <label for="deadlift" class="label">Deadlift:</label>
+                <label for="deadlift" class="label">{{ __('messages.dead') }}:</label>
                 <input type="number" name="deadlift" id="deadlift" class="input" value="{{ $user->deadlift }}" required>
             </div>
 
             <div class="form-group">
-                <label for="image" class="label">Profile Image:</label>
+                <label for="image" class="label">{{ __('messages.profimg') }}:</label>
                 <input type="file" name="image" id="image" class="input">
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('profile.show') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">{{ __('messages.update') }}</button>
+                <a href="{{ route('profile.show') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
             </div>
         </form>
 
@@ -123,7 +123,7 @@
             @csrf
             @method('DELETE')
 
-            <button type="submit" class="btn btn-danger">Delete Profile</button>
+            <button type="submit" class="btn btn-danger">{{ __('messages.delprof') }}</button>
         </form>
     </div>
 </x-app-layout>

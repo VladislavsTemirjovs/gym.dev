@@ -54,25 +54,25 @@
 <x-app-layout>
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-            {{ __('Izveidot sacensības') }}
+            {{ __('messages.createcomp') }}
         </h2>
     </x-slot>
     <form method="post" action="{{ route('competitions.store') }}" class="form">
     @csrf
     <div class="form-group">
-        <label for="title">Nosaukums:</label>
+        <label for="title">{{ __('messages.title') }}:</label>
         <input type="text" id="title" name="title" class="form-input" required>
     </div>
     <div class="form-group">
-        <label for="place">Vieta:</label>
+        <label for="place">{{ __('messages.place') }}:</label>
         <input type="text" id="place" name="place" class="form-input" required>
     </div>
     <div class="form-group">
-        <label for="date">Datums:</label>
+        <label for="date">{{ __('messages.date') }}:</label>
         <input type="date" id="date" name="date" class="form-input" required>
     </div>
     <div class="form-group">
-        <button type="submit" class="form-submit">Apstrprināt</button>
+        <button type="submit" class="form-submit">{{ __('messages.confirm') }}</button>
     </div>
 </form>
 </x-app-layout>
