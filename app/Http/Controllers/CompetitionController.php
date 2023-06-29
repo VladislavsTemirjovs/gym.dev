@@ -52,4 +52,8 @@ class CompetitionController extends Controller
 
     return redirect()->route('competitions.all');
 }
+public function show(Competition $competition)
+    {
+        return view('competitions.competes', compact('competition'));
+    }
 }

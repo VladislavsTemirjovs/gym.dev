@@ -14,7 +14,7 @@ class competition extends Model
         'place',
         'date',
     ];
-    public function piedalas(){
-        return $this->belongsTo(Piedalas::class);
+    public function competes(){
+        return $this->belongsTo(competes::class);
     }
 }

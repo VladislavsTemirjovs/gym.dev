@@ -145,22 +145,28 @@
     <ul>
         <li>
             <a href="{{ route('home') }}">Sākums</a>
+            @if(auth()->user()->role !== 'guest')
             <ul class="submenu">
                 <li><a href="{{ route('posts.new') }}">Jauns Ieraksts</a></li>
             </ul>
+            @endif
         </li>
         <li>
             <a href="{{ route('competitions.all') }}">Kalendārs</a>
+            @if(auth()->user()->role === 'admin')
             <ul class="submenu">
                 <li><a href="{{ route('competitions.create') }}">Izveidot jaunas</a></li>
             </ul>
+            @endif
         </li>
-        <li><a href="#">Reitings</a></li>
+        <li><a href="{{ route('user.filter') }}">Reitings</a></li>
+        @if(auth()->user()->role !== 'guest')
         <li><a href="{{route('profile.show')}}">Profils</a>
             <ul class="submenu">
                 <li><a href="{{ route('user.list') }}">Parādīt visus</a></li>
             </ul>
         </li>    
+        @endif
         <li>
             <form id="post-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf

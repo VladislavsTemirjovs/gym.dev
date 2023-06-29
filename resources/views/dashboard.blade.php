@@ -117,7 +117,7 @@ body {
             @foreach ($posts as $post)
                 <div class="post">
                     <div class="imagediv">
-                        <img src="{{ asset('/' . $post->user->image) }}" alt="Post Image" class="image">
+                        <img src="{{ asset('profile/' . $post->user->image) }}" alt="Post Image" class="image">
                     </div>
                     <div class="post-content">
                         <div class="post-header">
@@ -153,6 +153,7 @@ body {
                             @endforeach
                         @endif
                     </div>
+                    @if(auth()->user()->role !== 'guest')
                     <div class="comment-form">
                         <form action="{{ route('comments.store') }}" method="POST">
                             @csrf
@@ -170,6 +171,7 @@ body {
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
+                    @endif
                 </div>
             @endforeach
         </div>

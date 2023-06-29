@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
+use App\Charts\BenchChart;
 
 
 /*
@@ -29,7 +30,7 @@ Route::middleware(['auth'])->group( function(){
     Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/users', [ProfileController::class, 'userList'])->name('user.list');
     Route::get('/profile/{user}', [ProfileController::class, 'showID'])->name('profile.showID');
-
+    Route::match(['get', 'post'], '/users/filter', [ProfileController::class, 'filterUsers'])->name('user.filter');
 
 
 
@@ -40,6 +41,8 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/competitions/edit/{id}',[CompetitionController::class, 'edit'] ) -> name('competitions.edit');
     Route::delete('/competitions/delete/{id}',[CompetitionController::class, 'destroy'] ) -> name('competitions.destroy');
     Route::put('/competitions/update/{id}',[CompetitionController::class, 'update'] ) -> name('competitions.update');
+    Route::get('/competitions/{competition}', [CompetitionController::class, 'show'])->name('competitions.show');
+
 
     Route::get('/post', [PostController::class, 'show']) -> name('posts.all');
     Route::get('/posts/new', [PostController::class, 'create']) -> name('posts.new');

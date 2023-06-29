@@ -50,6 +50,7 @@ class RegisteredUserController extends Controller
             'login' => $request->login,
             'name' => $request->name,
             'surname' => $request->surname,
+            'image' => 'profile/-2.jpg',
             'sex' => $request->sex,
             'age' => $request->age,
             'weight' => $request->weight,

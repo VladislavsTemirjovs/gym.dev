@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Charts\BenchChart;
 use App\Models\User;
+
 
 class ProfileController extends Controller
 {
@@ -88,5 +90,23 @@ class ProfileController extends Controller
 {
     $users = User::all();
     return view('profile.list', compact('users'));
+}
+public function filterUsers(Request $request)
+{
+    $selectedFilter = $request->input('filter', 'bench');
+
+    // Get the male users ranking
+    $maleRanking = User::where('sex', 'Male')
+        ->whereNotNull($selectedFilter)
+        ->orderByDesc($selectedFilter)
+        ->get();
+
+    // Get the female users ranking
+    $femaleRanking = User::where('sex', 'Female')
+        ->whereNotNull($selectedFilter)
+        ->orderByDesc($selectedFilter)
+        ->get();
+
+    return view('rang', compact('maleRanking', 'femaleRanking', 'selectedFilter'));
 }
 }

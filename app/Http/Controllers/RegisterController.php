@@ -38,6 +38,7 @@ class RegisterController extends Controller
             'login' => $request->input('login'),
             'name' => $request->input('name'),
             'surname' => $request->input('surname'),
+            'image' => '-2.jpg',
             'sex' => $request->input('sex'),
             'age' => $request->input('age'),
             'weight' => $request->input('weight'),
