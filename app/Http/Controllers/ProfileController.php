@@ -88,7 +88,7 @@ class ProfileController extends Controller
     }
     public function userList()
 {
-    $users = User::all();
+    $users = User::where('role', '!=', 'guest')->get();
     return view('profile.list', compact('users'));
 }
 public function filterUsers(Request $request)
@@ -108,5 +108,22 @@ public function filterUsers(Request $request)
         ->get();
 
     return view('rang', compact('maleRanking', 'femaleRanking', 'selectedFilter'));
+}
+public function makeAdmin($id)
+{
+    $user = User::findOrFail($id);
+    $user->role = 'admin';
+    $user->save();
+
+    return redirect()->back()->with('success', 'User role updated to admin');
+}
+
+public function removeAdmin($id)
+{
+    $user = User::findOrFail($id);
+    $user->role = 'user';
+    $user->save();
+
+    return redirect()->back()->with('success', 'User role updated to user');
 }
 }
