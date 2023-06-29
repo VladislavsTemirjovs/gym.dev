@@ -50,11 +50,33 @@
             margin-bottom: 10px;
         }
 
+        /* Button styles */
+        .btn {
+            background-color: #000000;
+            color: #FFFF00;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background-color: #FFFF00;
+            color: #000000;
+        }
+
+        .btn-danger {
+            background-color: #FF0000;
+            color: #FFFFFF;
+        }
+
     </style>
 
     <div class="profile">
         <div class="profile-image">
-            <img src="{{ asset('/' . $user->image) }}" alt="User Image" class="image">
+            <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="image">
         </div>
         <div class="profile-details">
             <div class="info">
@@ -79,7 +101,7 @@
             </div>
             <div class="info">
                 <span class="label">Bench Press:</span>
-                <span class="value">{{ $user->benchpress }}</span>
+                <span class="value">{{ $user->bench }}</span>
             </div>
             <div class="info">
                 <span class="label">Squat:</span>
@@ -90,6 +112,15 @@
                 <span class="value">{{ $user->deadlift }}</span>
             </div>
         </div>
+        <div class="profile-buttons">
+            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit</a>
+            <form action="{{ route('profile.destroy') }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
     </div>
 </x-app-layout>
+
 

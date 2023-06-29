@@ -24,6 +24,14 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/dashboard', function () { $posts = post::all(); return view('dashboard', compact('posts')); })->middleware(['auth', 'verified'])->name('dashboard');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout');
     Route::get('/profile/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/users', [ProfileController::class, 'userList'])->name('user.list');
+    Route::get('/profile/{user}', [ProfileController::class, 'showID'])->name('profile.showID');
+
+
+
 
 
     Route::get('/competitions', [CompetitionController::class, 'showAll']) -> name('competitions.all');

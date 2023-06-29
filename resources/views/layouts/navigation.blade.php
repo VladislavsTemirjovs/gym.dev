@@ -156,7 +156,11 @@
             </ul>
         </li>
         <li><a href="#">Reitings</a></li>
-        <li><a href="#">Profils</a></li>
+        <li><a href="{{route('profile.show')}}">Profils</a>
+            <ul class="submenu">
+                <li><a href="{{ route('user.list') }}">Parādīt visus</a></li>
+            </ul>
+        </li>    
         <li>
             <form id="post-link" action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
