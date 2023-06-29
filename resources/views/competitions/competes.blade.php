@@ -1,17 +1,106 @@
+<style>
+    body {
+        background-color: yellow;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .table-styled {
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .table-styled th,
+    .table-styled td {
+        transition: background-color 0.3s ease;
+    }
+
+    .table-styled tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    .table-styled td {
+        background-color: #fff;
+    }
+
+    .table-styled td:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .table-styled td:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .table-styled thead {
+        background-color: #555;
+        color: #fff;
+    }
+    
+    /* Custom styling */
+    .table-black-yellow th {
+        background-color: #000;
+        color: #ffd700;
+    }
+    
+    .table-black-yellow td {
+        background-color: #000;
+        color: #fff;
+    }
+    
+    .table-black-yellow tbody tr:hover {
+        background-color: #222;
+    }
+</style>
 <x-app-layout>
-<x-slot name="header">
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-            {{$competition->title }}
+        {{ $competition->title}}
         </h2>
     </x-slot>
-    <h2>Competing User:</h2>
-    <ul>
-        @if ($competition->competes && $competition->competes->user)
-            <li>Name: {{ $competition->competes->user->name }}</li>
-            <li>Surname: {{ $competition->competes->user->surname }}</li>
-            <li>Weight: {{ $competition->competes->user->weight }}</li>
-        @else
-            <li>No competing user found</li>
-        @endif
-    </ul>
+    <div class="container">
+        <table class="table table-black-yellow">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->surname }}</td>
+                        <td>{{ $user->weight }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </x-app-layout>

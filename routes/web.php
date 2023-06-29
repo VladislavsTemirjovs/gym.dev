@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group( function(){
     Route::delete('/competitions/delete/{id}',[CompetitionController::class, 'destroy'] ) -> name('competitions.destroy');
     Route::put('/competitions/update/{id}',[CompetitionController::class, 'update'] ) -> name('competitions.update');
     Route::get('/competitions/{competition}', [CompetitionController::class, 'show'])->name('competitions.show');
+    Route::post('/competes', [CompetitionController::class, 'storecompt'])->name('competes.store');
+
 
 
     Route::get('/post', [PostController::class, 'show']) -> name('posts.all');

@@ -85,7 +85,15 @@
                     </td>
                     <td>{{ $competition->place }}</td>
                     <td>{{ $competition->date }}</td>
-                    <td><button class="btn-piedalities">Piedalīties</button></td>
+                    @if(auth()->user()->role !== 'guest')
+                    <td>
+                                <form action="{{ route('competes.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="competition_id" value="{{ $competition->id }}">
+                                    <button type="submit" class="btn-piedalities">Piedalīties</button>
+                                </form>
+                    </td>
+                    @endif
                     @if(auth()->user()->role === 'admin')
                         <td>
                             <a href="{{ route('competitions.edit', ['id' => $competition->id]) }}" class="btn-labot">Labot</a>

@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class competes extends Model
 {
     use HasFactory;
-    public function user(){
-        return $this->hasMany(User::class);
+    protected $fillable = [
+        'user_id',
+        'competition_id',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function competition(){
-        return $this->hasMany(competition::class);
+
+    public function competition()
+    {
+        return $this->belongsTo(Competition::class);
     }
 }
