@@ -4,7 +4,7 @@
     <title>Registration</title>
     <style>
         html, body {
-            height: 120%;
+            height: 125%;
             margin: 40;
             padding: 40;
         }

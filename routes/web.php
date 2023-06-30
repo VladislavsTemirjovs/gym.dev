@@ -19,6 +19,10 @@ use App\Http\Controllers\LanguageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('lang/{lang}', function($lang) {
+    session()->put('lang', $lang);
+    return back();
+})->name('lang');
 Route::middleware(['auth'])->group( function(){
     Route::get('/', function(){return redirect('/dashboard');}) -> name('home');
     Route::get('/dashboard', function () { $posts = post::all(); return view('dashboard', compact('posts')); })->middleware(['auth', 'verified'])->name('dashboard');
@@ -53,7 +57,6 @@ Route::middleware(['auth'])->group( function(){
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
-    Route::post('/switch-language', [LanguageController::class, 'switchLanguage'])->name('switch-language');
 });
 
 require __DIR__.'/auth.php';

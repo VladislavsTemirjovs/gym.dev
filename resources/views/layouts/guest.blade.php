@@ -13,6 +13,7 @@
         <!-- Scripts -->
     </head>
     <body>
+    @include('layouts.nav2')
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
