@@ -24,18 +24,18 @@
 <nav class="navigation">
     <ul>
         <li>
-            <form action="{{ route('lang', ['lang' => 'en']) }}" method="GET" style="display: inline;">
-                @csrf
-                <button type="submit" name="lang" value="en" style="background-color: yellow; border: none; cursor: pointer;">
-                    English
-                </button>
-            </form>
-            <form action="{{ route('lang', ['lang' => 'lv']) }}" method="GET" style="display: inline;">
-                @csrf
-                <button type="submit" name="lang" value="lv" style="background-color: yellow; border: none; cursor: pointer;">
-                    Latvian
-                </button>
-            </form>
+        <form action="{{ route('lang', ['lang' => 'en']) }}" method="GET" style="display: inline;">
+    @csrf
+    <button type="submit" name="lang" value="en" style="background-color: yellow; border: none; cursor: pointer;">
+    {{ __('messages.en') }}
+    </button>
+</form>
+<form action="{{ route('lang', ['lang' => 'lv']) }}" method="GET" style="display: inline;">
+    @csrf
+    <button type="submit" name="lang" value="lv" style="background-color: yellow; border: none; cursor: pointer;">
+    {{ __('messages.lv') }}
+    </button>
+</form>
         </li>
     </ul>
 </nav>

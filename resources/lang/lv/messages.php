@@ -53,5 +53,7 @@ return [
     'image' => 'Attēls (neobligāts)',
     'create' => 'Izveidot',
     'allusers' => 'Visi lietotāji',
-    'nocom' => "Uzrakstīt komentāru"
+    'nocom' => "Uzrakstīt komentāru",
+    'lv' => 'Latviski',
+    'en' => 'English'
 ];

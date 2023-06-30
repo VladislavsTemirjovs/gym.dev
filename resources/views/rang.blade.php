@@ -192,7 +192,7 @@
                         @foreach ($maleRanking as $index => $user)
                             <div class="flex items-center mb-4">
                                 <div class="profile-image">
-                                    <img src="{{ asset('profile/' . $user->image) }}" alt="User Image">
+                                    <img src="{{ asset('profile/' . $user->image) }}" alt="">
                                 </div>
                                 <div class="ml-4">
                                     <h3 class="font-bold">{{ $index + 1 }}. {{ $user->name }} {{ $user->surname }}</h3>
@@ -211,7 +211,7 @@
                         @foreach ($femaleRanking as $index => $user)
                             <div class="flex items-center mb-4">
                             <div class="profile-image">
-                                    <img src="{{ asset('profile/' . $user->image) }}" alt="User Image">
+                                    <img src="{{ asset('profile/' . $user->image) }}" alt="">
                                 </div>
                                 <div>
                                     <h3 class="font-bold">{{ $index + 1 }}. {{ $user->name }} {{ $user->surname }}</h3>

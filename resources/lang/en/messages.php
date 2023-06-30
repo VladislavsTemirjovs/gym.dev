@@ -53,5 +53,7 @@ return [
     'image' => 'Image(optional)',
     'create' => 'Create',
     'allusers' => 'All User',
-    'nocom' => "Write a Comment"
+    'nocom' => "Write a Comment",
+    'lv' => 'Latviski',
+    'en' => 'English'
 ];

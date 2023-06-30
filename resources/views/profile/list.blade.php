@@ -65,7 +65,7 @@ body {
         <div class="user">
             <a href="{{ route('profile.showID', ['user' => $user->id]) }}">
                 <div class="profile-image">
-                    <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="image">
+                    <img src="{{ asset('profile/' . $user->image) }}" alt="" class="image">
                 </div>
             </a>
             <div class="profile-details">

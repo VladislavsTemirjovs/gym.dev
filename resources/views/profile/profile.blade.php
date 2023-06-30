@@ -76,7 +76,7 @@
 
 <div class="profile">
     <div class="profile-image">
-        <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="image">
+        <img src="{{ asset('profile/' . $user->image) }}" alt="" class="image">
     </div>
     <div class="profile-details">
         <div class="info">

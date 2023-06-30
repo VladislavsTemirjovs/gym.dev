@@ -129,7 +129,7 @@ body {
                         </div>
                         <div class="postimage">
                             @if ($post->image)
-                                <img src="{{ asset('/' . $post->image) }}" alt="Post Image" class="pimage">
+                                <img src="{{ asset('/' . $post->image) }}" alt="" class="pimage">
                             @endif
                         </div>
                     </div>
