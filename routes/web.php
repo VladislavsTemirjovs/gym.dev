@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/profile/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile/destroy/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/users', [ProfileController::class, 'userList'])->name('user.list');
     Route::get('/profile/{user}', [ProfileController::class, 'showID'])->name('profile.showID');
     Route::match(['get', 'post'], '/users/filter', [ProfileController::class, 'filterUsers'])->name('user.filter');

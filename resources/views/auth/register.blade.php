@@ -127,19 +127,19 @@
                     <div class="form-group">
                         <x-label for="bench" :value="__('messages.bench')" />
 
-                        <x-input id="bench" class="block mt-1 w-full" type="number" name="bench" step="0.25" :value="old('bench')" required />
+                        <x-input id="bench" class="block mt-1 w-full" type="number" name="bench" step="0.25" :value="old('bench')"  />
                     </div>
 
                     <div class="form-group">
                         <x-label for="squat" :value="__('messages.squat')" />
 
-                        <x-input id="squat" class="block mt-1 w-full" type="number" name="squat" step="0.25" :value="old('squat')" required />
+                        <x-input id="squat" class="block mt-1 w-full" type="number" name="squat" step="0.25" :value="old('squat')" />
                     </div>
 
                     <div class="form-group">
                         <x-label for="deadlift" :value="__('messages.dead')" />
 
-                        <x-input id="deadlift" class="block mt-1 w-full" type="number" name="deadlift" step="0.25" :value="old('deadlift')" required />
+                        <x-input id="deadlift" class="block mt-1 w-full" type="number" name="deadlift" step="0.25" :value="old('deadlift')"/>
                     </div>
 
                     <div class="form-group">

@@ -73,9 +73,9 @@ class ProfileController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($id);
 
         // Delete the profile image if it exists
         if ($user->image && File::exists(public_path('profile/' . $user->image))) {

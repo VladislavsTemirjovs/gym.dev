@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
-    public function show() {
-        $posts = post::with('user', 'comment')->get();
-        return view('dashboard',compact('posts'));
-    }
+    public function show()
+{
+    $posts = Post::with('user', 'comment')->orderBy('created_at', 'desc')->get();
+    return view('dashboard', compact('posts'));
+}
     public function create()
     {
         // Your code to prepare data or perform any necessary actions before displaying the view

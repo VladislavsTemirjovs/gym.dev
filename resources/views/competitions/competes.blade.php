@@ -80,25 +80,33 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-yellow-500 bg-black p-4">
-        {{ $competition->title}}
+            {{ $competition->title }}
         </h2>
     </x-slot>
     <div class="container">
         <table class="table table-black-yellow">
             <thead>
                 <tr>
+                    <th>{{ __('Nr') }}</th>
                     <th>{{ __('messages.name') }}</th>
                     <th>{{ __('messages.surname') }}</th>
                     <th>{{ __('messages.weight') }}</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $counter = 1;
+                @endphp
                 @foreach ($users as $user)
                     <tr>
+                        <td>{{ $counter }}.</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->surname }}</td>
                         <td>{{ $user->weight }}</td>
                     </tr>
+                    @php
+                        $counter++;
+                    @endphp
                 @endforeach
             </tbody>
         </table>

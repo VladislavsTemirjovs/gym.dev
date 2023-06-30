@@ -119,11 +119,10 @@
             </div>
         </form>
 
-        <form action="{{ route('profile.destroy') }}" method="POST">
-            @csrf
-            @method('DELETE')
-
-            <button type="submit" class="btn btn-danger">{{ __('messages.delprof') }}</button>
-        </form>
+        <form action="{{ route('profile.destroy', ['id' => $user->id]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+</form>
     </div>
 </x-app-layout>

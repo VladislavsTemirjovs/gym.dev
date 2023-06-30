@@ -125,12 +125,14 @@
                     <button type="submit" class="btn btn-primary">{{ __('messages.removeAdm') }}</button>
                 </form>
             @endif
+            @if ($user->id === auth()->user()->id)
             <a href="{{ route('profile.edit') }}" class="btn btn-primary">{{ __('messages.edit') }}</a>
-            <form action="{{ route('profile.destroy') }}" method="POST" style="display: inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
-            </form>
+            @endif
+            <form action="{{ route('profile.destroy', ['id' => $user->id]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
+</form>
         @endif
     </div>
 </div>
