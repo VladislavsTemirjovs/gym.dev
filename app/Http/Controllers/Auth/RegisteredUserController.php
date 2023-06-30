@@ -40,9 +40,9 @@ class RegisteredUserController extends Controller
             'sex' => ['required', 'string', 'in:Male,Female'],
             'age' => ['required', 'integer', 'min:12', 'max:100'],
             'weight' => ['required', 'numeric', 'min:40', 'max:200'],
-            'bench' => ['required', 'numeric', 'min:20', 'max:999'],
-            'squat' => ['required', 'numeric', 'min:20', 'max:999'],
-            'deadlift' => ['required', 'numeric', 'min:20', 'max:999'],
+            'bench' => ['nullable', 'numeric', 'min:20', 'max:999'],
+            'squat' => ['nullable', 'numeric', 'min:20', 'max:999'],
+            'deadlift' => ['nullable', 'numeric', 'min:20', 'max:999'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
     
