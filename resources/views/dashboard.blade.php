@@ -164,6 +164,7 @@ body {
                             <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
                         </form>
                     </div>
+                    @if (auth()->user()->role === 'admin' || auth()->user()->id === $post->user->id)
                     <div class="delete-button">
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                             @csrf
@@ -171,6 +172,7 @@ body {
                             <button type="submit" class="btn btn-danger">{{ __('messages.delete') }}</button>
                         </form>
                     </div>
+                    @endif
                     @endif
                 </div>
             @endforeach

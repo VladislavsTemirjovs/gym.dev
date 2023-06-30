@@ -53,4 +53,5 @@ return [
     'image' => 'Image(optional)',
     'create' => 'Create',
     'allusers' => 'All User',
+    'nocom' => "Write a Comment"
 ];

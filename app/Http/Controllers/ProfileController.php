@@ -99,12 +99,14 @@ public function filterUsers(Request $request)
     $maleRanking = User::where('sex', 'Male')
         ->whereNotNull($selectedFilter)
         ->orderByDesc($selectedFilter)
+        ->take(6)
         ->get();
 
     // Get the female users ranking
     $femaleRanking = User::where('sex', 'Female')
         ->whereNotNull($selectedFilter)
         ->orderByDesc($selectedFilter)
+        ->take(6)
         ->get();
 
     return view('rang', compact('maleRanking', 'femaleRanking', 'selectedFilter'));

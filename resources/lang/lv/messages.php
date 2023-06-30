@@ -53,4 +53,5 @@ return [
     'image' => 'Attēls (neobligāts)',
     'create' => 'Izveidot',
     'allusers' => 'Visi lietotāji',
+    'nocom' => "Uzrakstīt komentāru"
 ];

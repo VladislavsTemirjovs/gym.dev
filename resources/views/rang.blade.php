@@ -210,8 +210,8 @@
                     @if ($femaleRanking)
                         @foreach ($femaleRanking as $index => $user)
                             <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 mr-4">
-                                    <img src="{{ asset('profile/' . $user->image) }}" alt="User Image" class="rounded-full object-cover w-full h-full">
+                            <div class="profile-image">
+                                    <img src="{{ asset('profile/' . $user->image) }}" alt="User Image">
                                 </div>
                                 <div>
                                     <h3 class="font-bold">{{ $index + 1 }}. {{ $user->name }} {{ $user->surname }}</h3>

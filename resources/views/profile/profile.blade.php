@@ -114,12 +114,12 @@
     </div>
     <div class="profile-buttons">
         @if (auth()->user()->role === 'admin' || auth()->user()->id === $user->id)
-            @if ($user->role === 'user')
+            @if ($user->role === 'user' && auth()->user()->role === 'admin')
                 <form action="{{ route('admin.make', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
                     @csrf
                     <button type="submit" class="btn btn-primary">{{ __('messages.makeAdm') }}</button>
                 </form>
-            @elseif ($user->role === 'admin')
+            @elseif ($user->role === 'admin' && auth()->user()->role === 'admin')
                 <form action="{{ route('admin.remove', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
                     @csrf
                     <button type="submit" class="btn btn-primary">{{ __('messages.removeAdm') }}</button>
